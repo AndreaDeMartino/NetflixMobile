@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- FONTAWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/main.css">
+  <title>TITLE</title>
+</head>
+<body class="u-montserrat">
+
+  <!-- ***** BLOCK__ELEMENT--MODIFIER *****  -->
+  <div id="app">
+
+    <!-- HEADER -->
+    <div class="header--bg"></div>
+    <header class="main-header">
+      <nav class="main-nav">
+        <ul class="nav__menu u-vanilla-list u-inline-block">
+          <li>Home</li>
+          <li>Movies</li>
+        </ul>
+        <img src="img/logo.png" alt="logo" class="nav__logo">
+        <ul class="nav__cta u-vanilla-list u-inline-block">
+          <li><input class="nav__inputbox" type="text" placeholder="Search here"></li>
+        </ul>
+      </nav>
+
+      <div class="jumbotron">
+        <div class="jumbotron__wrapper">
+          <div class="jumbtron__info u-mgbot-md">
+            <h1 class="jumbtron__title u-mgbot-s">GAME OF THRONES</h1>
+            <h3 class="jumbtron__vote u-mgbot-s"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></h3>
+            <h5 class="jumbtron__overview">Across the past seven seasons of the legendary series Game of Thrones</h5>
+          </div>
+  
+          <div class="jumbotron__cta">
+            <button class="btn btn--red u-mgrx-xs"><i class="fas fa-play"></i> RESUME</button>
+            <button class="btn btn--transparent"><i class="fas fa-plus"></i>MY LIST</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- MAIN -->
+    <main class="main-content">
+      <div class="products">
+        
+      </div>
+    </main>
+
+  </div>
+
+  <!-- HANDLEBARS: TEMPLATE -->
+    <script id="products__template" type="text/x-handlebars-template">
+      <div class="product">
+        <img class="poster" src="{{ img }}" alt="product image">
+        <ul class="product__info hide u-vanilla-list">
+          <li class="product__title"> <h3>Title: </h3> {{ title }}</li>
+          <li class="product__original-title"><h3>Original Title: </h3> <span>{{ original_title }}</span></li>
+          <li class="product__language"><h3>Language: </h3> <span>{{{ original_language }}}</span></li>
+          <li class="product__vote"><h3>Vote: </h3> <span>{{{ vote_average }}}</span></li>
+          <li class="product__type"><h3>Type: </h3> <span>{{ type }}</span></li>
+          <li class="product__overview"><h3>Overview: </h3> <span>{{ overview }}</span></li>
+        </ul>
+      </div>
+      <!-- <div class="jumbtron__info">
+        <h1>{{ title }}</h1>
+        <h5>{{ overview }}</h5>
+        <h3>{{{ vote_average }}}</h3>
+      </div> -->
+    </script>
+  
+  
+  <!-- HANDLEBARS -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js'></script>
+  <!-- JQUERY -->
+  <script 
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous">
+  </script>
+  <!-- JS -->
+  <script src="script/main.js"></script>
+</body>
+</html>
