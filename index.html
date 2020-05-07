@@ -56,15 +56,15 @@
 
   <!-- HANDLEBARS: TEMPLATE -->
     <script id="products__template" type="text/x-handlebars-template">
-      <div class="product">
+      <div class="product u-relative">
         <img class="poster" src="{{ img }}" alt="product image">
         <ul class="product__info hide u-vanilla-list">
-          <li class="product__title"> <h3>Title: </h3> {{ title }}</li>
-          <li class="product__original-title"><h3>Original Title: </h3> <span>{{ original_title }}</span></li>
-          <li class="product__language"><h3>Language: </h3> <span>{{{ original_language }}}</span></li>
-          <li class="product__vote"><h3>Vote: </h3> <span>{{{ vote_average }}}</span></li>
-          <li class="product__type"><h3>Type: </h3> <span>{{ type }}</span></li>
-          <li class="product__overview"><h3>Overview: </h3> <span>{{ overview }}</span></li>
+          <li class="product__title"><span>{{ title }}</span></li>
+          <!-- <li class="product__original-title"><span>{{ original_title }}</span></li> -->
+          <li class="product__vote"> <span>{{{ vote_average }}}</span></li>
+          <li class="product__type"> <span>{{ type }}</span></li>
+          <li class="product__language"> <span>{{{ original_language }}}</span></li>
+          <li class="product__overview"><h3>OVERVIEW:</h3> <span>{{ overview }}</span></li>
         </ul>
       </div>
       <!-- <div class="jumbtron__info">

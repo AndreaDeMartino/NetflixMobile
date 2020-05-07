@@ -30,20 +30,9 @@ $(document).ready(function () {
     // CHANGE IMG HEADER
     headerBg.css("background-image", "url('"+ img + "')"); 
 
-    $('.jumbtron__title').text($(this).find('.product__original-title span').text());
+    $('.jumbtron__title').text($(this).find('.product__title span').text());
     $('.jumbtron__vote').html($(this).find('.product__vote span').html());
     $('.jumbtron__overview').text($(this).find('.product__overview span').text());
-  });
-
-
-  // POSTER HOVER
-  $('#app').on('mouseenter', '.product', function() {
-    $(this).find('.poster').toggle();
-    $(this).find('.product__info').toggle();
-  });
-  $('#app').on('mouseleave', '.product', function() {
-    $(this).find('.poster').toggle();
-    $(this).find('.product__info').toggle();
   });
 
   /****************************************************
@@ -82,8 +71,8 @@ $(document).ready(function () {
           
           var product = {
           img: poster,
-          title : result[i][nameFormat],
-          original_title : result[i][originalFormat],
+          title : result[i][nameFormat].toUpperCase(),
+          original_title : result[i][originalFormat].toUpperCase(),
           original_language: flag(result[i].original_language),
           vote_average: stars(result[i].vote_average),
           type: type,

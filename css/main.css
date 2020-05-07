@@ -1,6 +1,7 @@
 /* Extra font */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 /* General Rules */
 body{
   height: 100vh;
@@ -162,26 +163,64 @@ body{
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: #000;
   border: 2px solid #bbb;
+  box-shadow: 0 0 5px rgba(255 ,255 ,255 ,1);
   color: white;
   margin-left: 10px;
   cursor: pointer;
 }
 
-.product h3{
-  display: inline-block;
-}
-
-.product__vote i{
-  color: yellow;
-}
-
-.product__language img{
-  height: 20px;
+.product:hover .product__info{
+  display: block;
 }
 
 .poster{
-  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
+
+.poster:hover{
+  opacity: 0.2;
+}
+
+.product h3{
+  font-family: 'Varela Round';
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.product__vote i{
+  color: #DC1A28;
+}
+
+.product__language img{
+  height: 16px;
+}
+
+.product__info li{
+  margin: 0 10px 5px;
+}
+
+.product__title{
+  font-family: 'Varela Round';
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.product__type{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+}
+
+.product__overview{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+}
+
+
