@@ -31,6 +31,7 @@
       </nav>
 
       <div class="jumbotron">
+        <div class="jumbotron__trailer hide"></div>
         <div class="jumbotron__wrapper">
           <div class="jumbtron__info u-mgbot-md">
             <h1 class="jumbtron__title u-mgbot-s">GAME OF THRONES</h1>
@@ -39,7 +40,7 @@
           </div>
   
           <div class="jumbotron__cta">
-            <button class="btn btn--red u-mgrx-xs"><i class="fas fa-play"></i> RESUME</button>
+            <button class="btn btn--red u-mgrx-xs resume"><i class="fas fa-play"></i> RESUME</button>
             <button class="btn btn--transparent"><i class="fas fa-plus"></i>MY LIST</button>
           </div>
         </div>
@@ -48,7 +49,6 @@
     <!-- MAIN -->
     <main class="main-content">
       <div class="products">
-        
       </div>
     </main>
 
@@ -56,7 +56,7 @@
 
   <!-- HANDLEBARS: TEMPLATE -->
     <script id="products__template" type="text/x-handlebars-template">
-      <div class="product u-relative">
+      <div class="product u-relative" data-id = "{{ id }}">
         <img class="poster" src="{{ img }}" alt="product image">
         <ul class="product__info hide u-vanilla-list">
           <li class="product__title"><span>{{ title }}</span></li>

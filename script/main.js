@@ -6,6 +6,8 @@ $(document).ready(function () {
   var apiKey = 'e689af11fd9023e87bb5c5b4fd5dde1e';
   var urlMovie = 'https://api.themoviedb.org/3/search/movie';
   var urlSerie = 'https://api.themoviedb.org/3/search/tv';
+  var tubeKey = '';
+  var urlConvert = '';
   // HANDLEBARS SETTINGS
   var source = $('#products__template').html();
   var template = Handlebars.compile(source);
@@ -22,8 +24,9 @@ $(document).ready(function () {
 
   // PRODUCT CLICK
   $('#app').on('click', '.product', function() { 
-    console.log(($(this).find('.product__overview span').text()));
-    
+    $('.jumbotron__trailer').hide();
+    $('.jumbotron__wrapper').show();
+
     var img = $(this).find('.poster').attr('src');
     // RESIZE IMG
     img = img.replace("/w342/", "/w500/");
@@ -33,7 +36,30 @@ $(document).ready(function () {
     $('.jumbtron__title').text($(this).find('.product__title span').text());
     $('.jumbtron__vote').html($(this).find('.product__vote span').html());
     $('.jumbtron__overview').text($(this).find('.product__overview span').text());
+
+    // GET TYPE AND ID TO CREATE YOUTUBE URL API
+    var productType = ($(this).find('.product__type span').text())
+    var movieId = $(this).attr('data-id');
+    urlConvert = 'https://api.themoviedb.org/3/' + productType + '/' + movieId + '/videos?api_key=e689af11fd9023e87bb5c5b4fd5dde1e&language=en-US';
   });
+
+  // CLICK TRAILER AND EXECUTE YOUTUBE API
+  $('.resume').click(function(){
+    $.ajax({
+      url: urlConvert,
+      method: 'GET',
+      success: function(data){
+        var result = data.results;
+        tubeKey = result[0].key;
+        htmlTrailer = '<iframe src="https://www.youtube.com/embed/' + tubeKey + '?autoplay=1&fs=0&controls=0" frameborder="0"></iframe>'
+        $('.jumbotron__wrapper').hide();
+        $('.jumbotron__trailer').html(htmlTrailer).show();
+      },
+      error: function(){
+        console.log('errore bapi trailer');
+      }
+    })
+  })
 
   /****************************************************
   * FUNCTIONS
@@ -42,8 +68,8 @@ $(document).ready(function () {
   // FUNCTION: ADD PRODUCT WITH HANDLEBARS
   function addProduct (){
     productsBox.children().remove();
-    apiCall(urlMovie,'title','Movie');
-    apiCall(urlSerie,'name','SerieTv');
+    apiCall(urlMovie,'title','movie');
+    apiCall(urlSerie,'name','tv');
     // CLEAN PRODUCTS BOX AND INPUTBOX VALUE
     searchInput.val('');
   }
@@ -76,16 +102,13 @@ $(document).ready(function () {
           original_language: flag(result[i].original_language),
           vote_average: stars(result[i].vote_average),
           type: type,
-          overview: result[i].overview.substr(0, 70)
+          overview: result[i].overview.substr(0, 70),
+          id: result[i].id
           }
           // APPEND A PRODUCT
           var html = template(product);
           productsBox.append(html);
         }
-        // ALERT IF THE SEARCH RETURN NO RESULT
-        if(type == 'SerieTv' && productsBox.children().length == 0){
-          alert('La ricerca non ha prodotto nessun risultato');         
-        };
       },
       error: function(){
         console.log('Api Error');
